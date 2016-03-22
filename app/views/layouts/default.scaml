@@ -1,13 +1,23 @@
 -@ var body: String
 -@ var title: String = "My App"
 
+- import controllers._
+
+- var stylesheets = Seq(routes.Assets.versioned("stylesheets/application.css"))
+- var icon = routes.Assets.versioned("images/favicon.png")
+- var javascripts = Seq( routes.Assets.versioned("javascripts/jquery.min.js"), routes.Assets.versioned("javascripts/bootstrap.min.js") )
+
 !!!5
 %html(lang="en")
   %head
+    %meta(charset="UTF-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    %meta(name="viewport" content="width=device-width, initial-scale=1")
     %title #{title}
-    //- var css = "app/assets/stylesheets/main.css"
-    //- var icon = "app/assets/images/favicon.png"
-    //%link(rel="stylesheet" media="screen" href=css)
-    //%link(rel="shortcut icon" type="image/png" href=icon)
-%body
-  -unescape(body)
+    %link(rel="shortcut icon" type="image/png" href=icon)
+    - for( css <- stylesheets )
+      %link(rel="stylesheet" media="screen" href=css)
+    - for{ js <- javascripts }
+      %script(src=js)
+  %body
+    -unescape(body)
