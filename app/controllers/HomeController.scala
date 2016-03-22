@@ -1,7 +1,8 @@
 package controllers
 
-import javax.inject._
-import play.api._
+import javax.inject.{Inject, Singleton}
+
+import com.github.tototoshi.play2.scalate._
 import play.api.mvc._
 
 /**
@@ -9,7 +10,7 @@ import play.api.mvc._
  * application's home page.
  */
 @Singleton
-class HomeController @Inject() extends Controller {
+class HomeController @Inject()(scalate: Scalate) extends Controller {
 
   /**
    * Create an Action to render an HTML page with a welcome message.
@@ -18,7 +19,7 @@ class HomeController @Inject() extends Controller {
    * a path of `/`.
    */
   def index = Action {
-    Ok(views.html.index("Your new application is ready."))
+    Ok(scalate.render("index.scaml", Map("attr1" -> "none")))
   }
 
 }

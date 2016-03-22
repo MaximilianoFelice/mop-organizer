@@ -1,0 +1,13 @@
+-@ var body: String
+-@ var title: String = "My App"
+
+!!!5
+%html(lang="en")
+  %head
+    %title #{title}
+    //- var css = "app/assets/stylesheets/main.css"
+    //- var icon = "app/assets/images/favicon.png"
+    //%link(rel="stylesheet" media="screen" href=css)
+    //%link(rel="shortcut icon" type="image/png" href=icon)
+%body
+  -unescape(body)
